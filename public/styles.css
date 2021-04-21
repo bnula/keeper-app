@@ -48,6 +48,7 @@
    font-size: 1.1em;
    margin-bottom: 6px;
  }
+
  .note p {
    font-size: 1.1em;
    margin-bottom: 10px;
@@ -55,3 +56,13 @@
    word-wrap: break-word;
  }
  
+ .note button {
+  display: inline-block;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem;
+  background-color: #f5ba13;
+  color: #fff;
+  border: solid;
+  border-radius: 15px;
+}
