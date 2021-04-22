@@ -12,14 +12,18 @@ function App() {
       content: ""
    });
 
-   const [displayNotes, setdisplayNotes] = useState(notes);
+   const [displayNotes, setDisplayNotes] = useState(notes);
 
    function addNote() {
-      setdisplayNotes(prevValues => {
+      setDisplayNotes(prevValues => {
          return (
             [...prevValues, newNote]
-         )
-      })
+         );
+      });
+      setNewNote({
+         title: "",
+         content: ""
+      });
    };
 
    function handleChange(event) {
@@ -29,17 +33,22 @@ function App() {
    }
 
    function removeNote(removeId) {
-      console.log(removeId)
-      setdisplayNotes(displayNotes => {
+      setDisplayNotes(displayNotes => {
          return displayNotes.filter((item) => {
             return item.key !== removeId
          })
-      })
+      });
    };
 
    return (
       <div>
          <Header />
+         <AddNote 
+            title={newNote.title}
+            content={newNote.content}
+            addNote={addNote}
+            onChange={handleChange}
+         />
          {displayNotes.map(
             note => 
                <Note 
@@ -50,12 +59,6 @@ function App() {
                removeNote={removeNote}
                />
             )}
-         <AddNote 
-            title={newNote.title}
-            text={newNote.text}
-            addNote={addNote}
-            onChange={handleChange}
-         />
          <Footer />
       </div>
    );
